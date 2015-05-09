@@ -20,11 +20,14 @@
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active t" id="eng">
-                                                    <h2>
-                                                       EN ماتيريال عامه
-                                                    </h2>
-                                                    Lorem ipsum dolor sit amet, charetra varius quam sit amet vulputate.
-                                                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero.
+
+                                                    {% for material in materials %}
+                                                        <div>
+                                                            <h2><a href="{{ material.link }}">{{ material.name }}</a></h2>
+                                                            <p>{{ material.description }}</p>
+                                                        </div>
+                                                    {% endfor %}
+
                                                 </div>
                                                 <div class="tab-pane t" id="enq">
                                                     <h2>
