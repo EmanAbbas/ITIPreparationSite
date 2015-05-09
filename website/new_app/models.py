@@ -14,7 +14,7 @@ class Track(models.Model):
 	title=models.CharField(max_length=100)
 	description=models.TextField(max_length=1200)
 
-	def __str__():
+	def __str__(self):
 		return self.title
 
 class Question(models.Model):
@@ -23,7 +23,7 @@ class Question(models.Model):
 	user_id=models.ForeignKey(User)
 	track_id=models.ForeignKey(Track)
 
-	def __str__():
+	def __str__(self):
 		return self.header
 
 class Material(models.Model):
@@ -32,7 +32,7 @@ class Material(models.Model):
 	user_id=models.ManyToManyField(User)
 	track_id=models.ManyToManyField(Track)
 
-	def __str__():
+	def __str__(self):
 			return self.name
 
 class Type(models.Model):
@@ -41,7 +41,7 @@ class Type(models.Model):
         ('Technical', 'Technical'),
         ('Final','Final_interview') )
 	role_type = models.CharField(max_length=1, choices=role)
-	def __str__():
+	def __str__(self):
 		return self.role_type
 
 
@@ -51,5 +51,5 @@ class Post(models.Model):
 	date=models.CharField(max_length=100)
 	type_name=models.ForeignKey(Type)
 
-	def __str__():
+	def __str__(self):
 		return self.title
