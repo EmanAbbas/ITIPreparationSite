@@ -4,7 +4,8 @@
 {% block maincontent %}
       <div class="row">
                         <div class="col-md-12">
-                           
+
+
                             <!-- tabs -->
                             <div class="tabbable">
                                 <ul class="nav nav-tabs">
@@ -12,7 +13,7 @@
                                     <li style="width:50%;"><a href="#iq" data-toggle="tab">IQ</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="english">
+                                    <div class="tab-pane fade in active" id="english">
                                         <div class="tabbable tabs-right">
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a href="#eng" data-toggle="tab"> ماتيريال عامه</a></li>
@@ -22,10 +23,12 @@
                                                 <div class="tab-pane active t" id="eng">
 
                                                     {% for material in materials %}
+                                                        {% if material.type == 'EN' %}
                                                         <div>
                                                             <h2><a href="{{ material.link }}">{{ material.name }}</a></h2>
                                                             <p>{{ material.description }}</p>
                                                         </div>
+                                                        {% endif %}
                                                     {% endfor %}
 
                                                 </div>
@@ -41,7 +44,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="tab-pane" id="iq">
+                                    <div class="tab-pane fade" id="iq">
                                         <div class="tabbable tabs-right">
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a href="#iqg" data-toggle="tab"> ماتيريال عامه</a></li>
@@ -49,11 +52,15 @@
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active t" id="iqg">
-                                                    <h2>
-                                                        IQماتيريال عامه
-                                                    </h2>
-                                                    Lorem ipsum dolor sit amet, charetra varius quam sit amet vulputate.
-                                                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero.
+                                                    {% for material in materials %}
+                                                        {% if material.type == 'IQ' %}
+                                                        <div>
+                                                            <h2><a href="{{ material.link }}">{{ material.name }}</a></h2>
+                                                            <p>{{ material.description }}</p>
+                                                        </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+
                                                 </div>
                                                 <div class="tab-pane t" id="iqq">
                                                     <h2>

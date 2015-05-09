@@ -11,7 +11,8 @@ class SiteUser(models.Model):
 
 class Track(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(max_length=1200)
+    short_name = models.CharField(max_length=10)
+    description = models.TextField()
 
     def __str__(self):
         return self.title
@@ -28,9 +29,16 @@ class Question(models.Model):
 
 
 class Material(models.Model):
+
+    type_choices = (
+        ('IQ', 'IQ'),
+        ('EN', 'English'),
+        ('TRACK', 'Track'),
+    )
+
     name = models.CharField(max_length=100)
     link = models.URLField()
-
+    type = models.CharField(choices=type_choices, max_length=10, default='TRACK')
 
     description = models.TextField(blank=True)
     user_id = models.ManyToManyField(User)
