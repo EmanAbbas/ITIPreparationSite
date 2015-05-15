@@ -21,5 +21,7 @@ from new_app.views import *
 admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^firststep/', firstStep, name='firststep'),
+    url(r'^firststep/$', firstStep, name='firststep'),
+    url(r'^tracks/$', tracks, name='tracks'),
+    url(r'^track/([0-9]+)/$', track_details, name='track'),
 ]

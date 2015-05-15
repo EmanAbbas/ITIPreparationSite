@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block maincontent %}
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="col-md-8 align-right">
+                {{ track.description }}
+            </div>
+            <div class="col-md-4">
+                <ul>
+                    {% for track in tracks %}
+                        <li>
+                        <a href="{% url 'track' track.id %}">{{ track.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+{% endblock maincontent %}
