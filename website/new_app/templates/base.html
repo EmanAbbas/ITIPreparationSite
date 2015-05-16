@@ -139,13 +139,21 @@ background-color :#f6f6f6;
                     <li><a href="#about">إنشاء حساب</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" dir="rtl" style="padding-right:50px;">
-                    <li><a href="#contact">أسئله شائعه</a></li>
+                    <li><a href="{% url 'FAQs' %}">أسئله شائعه</a></li>
                     <li><a href="#about">تجربتي</a></li>
 
                     <li class="dropdown">
-                        <a href="{% url 'tracks' %}">التراك</a>
-                        <li>test</li>
-                    </li`>
+
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                           التراك 
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for track in tracks %}
+                            <li><a href="{% url 'track' track.id %}">{{ track.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
 
                     <li><a href="{% url 'firststep' %}" class="active1">أول خطوه</a></li>
 
@@ -159,7 +167,7 @@ background-color :#f6f6f6;
 
         
         <!--main content-->
-        <div class="container main-content">
+        <div class="container main-content" style="min-height :500px;">
             
 
               {% block maincontent %}

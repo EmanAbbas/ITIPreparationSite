@@ -19,10 +19,22 @@ class Track(models.Model):
 
 
 class Question(models.Model):
+
+    type_choices = (
+        ('IQ', 'IQ'),
+        ('EN', 'English'),
+        ('FAQ', 'FAQ'),
+        ('TRACK', 'Track'),
+    )
+
     header = models.CharField(max_length=100)
     answer = models.TextField(max_length=1200)
     user_id = models.ForeignKey(User)
-    track_id = models.ForeignKey(Track)
+    track_id = models.ForeignKey(Track, null=True, blank=True)
+
+    type = models.CharField(choices=type_choices, max_length=10, default='TRACK')
+
+
 
     def __str__(self):
         return self.header

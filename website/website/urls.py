@@ -24,4 +24,7 @@ urlpatterns = [
     url(r'^firststep/$', firstStep, name='firststep'),
     url(r'^tracks/$', tracks, name='tracks'),
     url(r'^track/([0-9]+)/$', track_details, name='track'),
+
+
+    url(r'^faq/$', FAQ, name='FAQs'),
 ]

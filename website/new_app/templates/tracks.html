@@ -5,18 +5,52 @@
     <div class="row">
         <div class="col-md-12 ">
 
+            <div class="tabbable tabs-right">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a href="#desc" data-toggle="tab">الوصف</a></li>
+                                                <li><a href="#material" data-toggle="tab">ماتيريال</a></li>
+                                                <li><a href="#questions" data-toggle="tab">أسئله مكرره</a></li>
+                                            </ul>
 
-            <div class="col-md-8 align-right">
-                {{ track.description }}
-            </div>
-            <div class="col-md-4">
-                <ul>
-                    {% for track in tracks %}
-                        <li>
-                        <a href="{% url 'track' track.id %}">{{ track.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+                                            <div class="tab-content">
+                                            <div class="tab-pane active t" id="desc">
+                                                    <h2>
+                                                        Desc
+                                                    </h2>
+                                                     {{ track.description }}
+                                                </div>
+                                            <div class="tab-pane t" id="material">
+                                                    <h2>
+                                                        Material
+                                                    </h2>
+                                                    {% for material in materials %}
+                                                        {% if material.type == 'TRACK' %}
+                                                        <div>
+                                                            <h2><a href="{{ material.link }}">{{ material.name }}</a></h2>
+                                                            <p>{{ material.description }}</p>
+                                                        </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="tab-pane t" id="questions">
+
+                                                   <h2>
+                                                        Questions
+                                                    </h2>
+                                                    {% for question in questions %}
+                                                        <div>
+                                                            <h2>{{ question.header }}</h2>
+                                                            <p>{{ question.answer }}</p>
+                                                        </div>
+                                                    {% endfor %}
+
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
         </div>
 {% endblock maincontent %}

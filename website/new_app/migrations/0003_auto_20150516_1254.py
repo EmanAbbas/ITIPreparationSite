@@ -7,13 +7,14 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('new_app', '0006_auto_20150509_1724'),
+        ('new_app', '0002_auto_20150516_1247'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='track',
-            name='short_name',
-            field=models.CharField(max_length=10),
+            model_name='question',
+            name='track_id',
+            field=models.ForeignKey(to='new_app.Track', null=True),
+            preserve_default=True,
         ),
     ]
