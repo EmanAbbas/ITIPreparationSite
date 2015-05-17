@@ -8,6 +8,11 @@ def firstStep(request):
     materials = Material.objects.filter(type__in=['IQ','EN'])
     return render(request, 'firststep.html', {'materials':materials,'tracks':Track.objects.all()})
 
+def index(request):
+
+    materials = Material.objects.filter(type__in=['IQ','EN'])
+    return render(request, 'firststep.html', {'materials':materials,'tracks':Track.objects.all()})
+
 
 def tracks(request):
     all_tracks = Track.objects.all()
