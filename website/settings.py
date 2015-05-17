@@ -75,11 +75,12 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-try:
-    import dj_database_url
-    DATABASES = {}
+
+import dj_database_url
+DATABASES = {}
+if len(dj_database_url.config()) != 0:
     DATABASES['default'] =  dj_database_url.config()
-except:
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
