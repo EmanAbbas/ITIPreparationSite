@@ -14,13 +14,20 @@ class SiteUserAdmin(UserAdmin):
     inlines = (SiteUserInline,)
 
 
+class MyModelAdmin(admin.ModelAdmin):
+    exclude = ('user_id',)
+
+    def save_model(self, request, obj, form, change):
+        obj.user_id = request.user
+        obj.save()
+
 
 admin.site.unregister(User)
 
-admin.site.register(Track)
-admin.site.register(Question)
-admin.site.register(Material)
-admin.site.register(Post)
+admin.site.register(Track, MyModelAdmin)
+admin.site.register(Question,MyModelAdmin)
+admin.site.register(Material, MyModelAdmin)
+admin.site.register(Post, MyModelAdmin)
 admin.site.register(User,SiteUserAdmin)
 
 

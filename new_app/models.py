@@ -30,7 +30,7 @@ class Question(models.Model):
     header = models.CharField(max_length=100)
     answer = models.TextField(max_length=1200)
     user_id = models.ForeignKey(User)
-    track_id = models.ManyToManyField(Track)
+    track_id = models.ManyToManyField(Track, blank=True)
 
     type = models.CharField(choices=type_choices, max_length=10, default='TRACK')
 
@@ -54,7 +54,7 @@ class Material(models.Model):
 
     description = models.TextField(blank=True)
     user_id = models.ForeignKey(User)
-    track_id = models.ManyToManyField(Track)
+    track_id = models.ManyToManyField(Track, blank=True)
 
 
     def __str__(self):
