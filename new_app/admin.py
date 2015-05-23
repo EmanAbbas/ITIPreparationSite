@@ -20,7 +20,6 @@ admin.site.unregister(User)
 admin.site.register(Track)
 admin.site.register(Question)
 admin.site.register(Material)
-admin.site.register(Type)
 admin.site.register(Post)
 admin.site.register(User,SiteUserAdmin)
 
