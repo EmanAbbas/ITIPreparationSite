@@ -11,7 +11,7 @@ def firstStep(request):
 def home(request):
 
     materials = Material.objects.filter(type__in=['IQ','EN'])
-    return render(request, 'firststep.html', {'materials':materials,})
+    return render(request, 'home.html', {'materials':materials,})
 
 
 def tracks(request):
