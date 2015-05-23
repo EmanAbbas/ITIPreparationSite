@@ -22,7 +22,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^firststep/$', firstStep, name='firststep'),
-    url(r'^$', index, name='index'),
+    url(r'^$', home, name='home'),
     url(r'^tracks/$', tracks, name='tracks'),
     url(r'^track/([0-9]+)/$', track_details, name='track'),
 

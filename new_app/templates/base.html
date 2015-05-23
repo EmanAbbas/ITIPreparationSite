@@ -111,10 +111,11 @@
             <div class="col-lg-10">
                 <span style="font-size:x-large;color:#fff;float:right;margin-top:35px;margin-right:-1%;direction:rtl;text-align:left"> ITI موقع الإعداد لمنحة  </span>
 
+
             </div>
             <div class="col-lg-2">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{% url 'home' %}">
                         <img src="{% static 'images/logo.PNG' %}" alt="iti" class="logo" />
 
                     </a>
@@ -141,7 +142,7 @@
                     <li><a href="#about">إنشاء حساب</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-left" style="padding-right:50px;">
-                    <li><a href="index.html" >الرئيسيه</a></li>
+                    <li><a href="{% url 'home' %}" >الرئيسيه</a></li>
                     <li><a href="index.html#aboutiti">عن المنحه </a></li>
                     <li><a href="#contact">مراحل التقديم   </a></li>
                     <li><a href="{% url 'firststep' %}" class="active1">أول خطوه</a></li>
@@ -172,7 +173,8 @@
         
         <!--main content-->
         <div class="container-fluid main-content">
-            
+            {{ test }}
+
 
               {% block maincontent %}
               {% endblock maincontent %}
@@ -180,6 +182,22 @@
                   
        </div>
         </div>
+
+{#    <div class="container-fluid text-center navbar-fixed-bottom" style="margin-bottom: 34px">#}
+{#    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>#}
+{#    <!-- itiprepare -->#}
+{#    <ins class="adsbygoogle"#}
+{#     style="display:inline-block;width:728px;height:90px"#}
+{#     data-ad-client="ca-pub-4097541853071082"#}
+{#     data-ad-slot="2719494633"></ins>#}
+{#    <script>#}
+{##}
+{##}
+{#(adsbygoogle = window.adsbygoogle || []).push({});#}
+{#</script>#}
+{#</div>#}
+{#    #}
+
     <footer class="navbar-fixed-bottom">
         <span> Copyright © 2015 <a href="index.html" class="link"> </a>  . All rights reserved</span>
     </footer>
