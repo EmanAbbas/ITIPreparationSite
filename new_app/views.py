@@ -3,10 +3,10 @@ from models import *
 from django.db.models import Q
 # Create your views here.
 
-def firstStep(request):
-
-    materials = Material.objects.filter(type__in=['IQ','EN'])
-    return render(request, 'firststep.html', {'materials':materials,})
+def firstStep(request,type):
+    questions = Question.objects.filter(type=type)
+    materials = Material.objects.filter(type=type)
+    return render(request, 'firststep.html', {'materials':materials,'questions':questions})
 
 def home(request):
 
