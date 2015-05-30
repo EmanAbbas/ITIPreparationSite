@@ -34,7 +34,12 @@ class Question(models.Model):
 
     type = models.CharField(choices=type_choices, max_length=10, default='TRACK')
 
+    voteUpUsers = models.ManyToManyField(User, blank=True,related_name='questionUpVotes')
+    voteDownUsers = models.ManyToManyField(User, blank=True,related_name='questionDownVotes')
 
+    @property
+    def votes(self):
+        return self.voteUpUsers.count() - self.voteDownUsers.count()
 
     def __str__(self):
         return self.header
