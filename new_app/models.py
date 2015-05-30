@@ -18,6 +18,7 @@ class Track(models.Model):
         return self.title
 
 
+
 class Question(models.Model):
 
     type_choices = (
@@ -28,7 +29,6 @@ class Question(models.Model):
     )
 
     header = models.CharField(max_length=100)
-    answer = models.TextField(max_length=1200)
     user_id = models.ForeignKey(User)
     track_id = models.ManyToManyField(Track, blank=True)
 
@@ -39,6 +39,13 @@ class Question(models.Model):
     def __str__(self):
         return self.header
 
+class Answer(models.Model):
+    body = models.TextField("Answer")
+    question_id = models.ForeignKey(Question)
+    user_id = models.ForeignKey(User)
+
+    def __str__(self):
+        return self.body
 
 class Material(models.Model):
 

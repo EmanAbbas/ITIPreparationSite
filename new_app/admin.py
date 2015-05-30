@@ -26,6 +26,7 @@ admin.site.unregister(User)
 
 admin.site.register(Track, MyModelAdmin)
 admin.site.register(Question,MyModelAdmin)
+admin.site.register(Answer,MyModelAdmin)
 admin.site.register(Material, MyModelAdmin)
 admin.site.register(Post, MyModelAdmin)
 admin.site.register(User,SiteUserAdmin)
