@@ -43,20 +43,33 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'new_app',
+    'crispy_forms',
     
 )
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+
     'django.middleware.common.CommonMiddleware',
+    'new_app.force_default_middleware.ForceDefaultLanguageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+
 )
+
+
+# USE_I18N = True
+# LANGUAGE_CODE = 'ar'
 
 ROOT_URLCONF = 'website.urls'
 
@@ -72,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 "new_app.context_processors.base",
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -142,3 +156,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+LOGIN_REDIRECT_URL = 'home'

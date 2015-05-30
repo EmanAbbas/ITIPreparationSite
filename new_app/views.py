@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from models import *
 from django.db.models import Q
+
+from django.views.generic import CreateView, FormView
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.core.urlresolvers import reverse_lazy
 # Create your views here.
 
 def firstStep(request,type):
@@ -38,3 +42,15 @@ def FAQ(request):
     FAQs = Question.objects.filter(type='FAQ')
 
     return render(request,'faqs.html',{'questions':FAQs})
+
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    template_name = "signup.html"
+    success_url = reverse_lazy("home")
+
+
+class LoginView(FormView):
+    form_class = AuthenticationForm
+    template_name = "login.html"
+    success_url = reverse_lazy("home")

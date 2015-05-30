@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block maincontent %}
+
+
+    {% load widget_tweaks %}
+    {% load crispy_forms_tags %}
+
+    <div class="well col-md-6 col-md-offset-3">
+        <fieldset>
+            <legend>
+تسجيل الدخول
+            </legend>
+            <div class="panel-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <p><input class="btn btn-success pull-right" type="submit" value="تسجيل" /></p>
+                </form>
+            </div>
+        </fieldset>
+
+    </div>
+
+
+{% endblock maincontent %}
