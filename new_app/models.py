@@ -41,6 +41,15 @@ class Question(models.Model):
     def votes(self):
         return self.voteUpUsers.count() - self.voteDownUsers.count()
 
+
+    def userVote(self,user):
+        if self.voteUpUsers.filter(pk=user.id).exists():
+            return 1
+        elif self.voteDownUsers.filter(pk=user.id).exists():
+            return -1
+        else:
+            return 0
+
     def __str__(self):
         return self.header
 
@@ -49,8 +58,26 @@ class Answer(models.Model):
     question_id = models.ForeignKey(Question)
     user_id = models.ForeignKey(User)
 
+
+    voteUpUsers = models.ManyToManyField(User, blank=True,related_name='answerUpVotes')
+    voteDownUsers = models.ManyToManyField(User, blank=True,related_name='answerDownVotes')
+
+    @property
+    def votes(self):
+        return self.voteUpUsers.count() - self.voteDownUsers.count()
+
+
+    def userVote(self,user):
+        if self.voteUpUsers.filter(pk=user.id).exists():
+            return 1
+        elif self.voteDownUsers.filter(pk=user.id).exists():
+            return -1
+        else:
+            return 0
+
     def __str__(self):
         return self.body
+
 
 class Material(models.Model):
 

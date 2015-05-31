@@ -29,6 +29,8 @@ urlpatterns = [
 
     url(r'^faq/$', FAQ, name='FAQs'),
 
+    url(r'^vote/$', Vote, name='vote'),
+
 
 
     url(r'^signup/$', SignUpView.as_view(), name='signup'),
