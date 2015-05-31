@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class SiteUser(models.Model):
     user = models.OneToOneField(User)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.user.username
 
 
@@ -14,7 +14,7 @@ class Track(models.Model):
     short_name = models.CharField(max_length=10)
     description = models.TextField()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
 
@@ -50,7 +50,7 @@ class Question(models.Model):
         else:
             return 0
 
-    def __str__(self):
+    def __unicode__(self):
         return self.header
 
 class Answer(models.Model):
@@ -75,7 +75,7 @@ class Answer(models.Model):
         else:
             return 0
 
-    def __str__(self):
+    def __unicode__(self):
         return self.body
 
 
@@ -96,7 +96,7 @@ class Material(models.Model):
     track_id = models.ManyToManyField(Track, blank=True)
 
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -107,7 +107,7 @@ class Type(models.Model):
         ('Final', 'Final_interview') )
     role_type = models.CharField(max_length=1, choices=role)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.role_type
 
 
@@ -117,5 +117,5 @@ class Post(models.Model):
     date = models.CharField(max_length=100)
     type_name = models.ForeignKey(Type)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
