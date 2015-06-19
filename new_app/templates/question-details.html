@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block maincontent %}
+
+    {% load my_filters %}
+
+    <div class="row">
+
+    {% if msg%}
+    <div class="alert alert-success">
+    {{ msg }}
+    </div>
+    {% endif %}
+
+
+        <div class="panel panel-default">
+            <div class="col-md-12 panel-body">
+                <div class="alert alert-info" style="position: relative;">
+                    <div class="text-center col-md-1">
+
+                        <div  {% if not user.is_authenticated %} style="visibility: hidden;"{% endif %}>
+                            <a href="#" onclick="Vote('q',{{ question.id }},1, event)"><span
+                                    class="glyphicon glyphicon-thumbs-up text-success"> </span></a>
+                        </div>
+
+                        <div>
+                                                <span class="badge label-info" id="q{{ question.id }}">
+                                                    {{ question.votes }}
+                                                </span>
+
+                        </div>
+
+                        <div {% if not user.is_authenticated %} style="visibility: hidden;"{% endif %}>
+                            <a href="#" onclick="Vote('q',{{ question.id }},-1, event)"><span
+                                    class="glyphicon glyphicon-thumbs-down text-danger"> </span></a>
+                        </div>
+
+                    </div>
+
+                    <p class="h3">
+                        {{ question.header }}
+                    </p>
+
+
+                    {% if question.image %}
+                                    <div class="center">
+                                    <div class="col-md-3">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img src="{{ question.image.url }}" alt="">
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" href="{{ question.image.url }}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div><!--/.portfolio-item-->
+                                        </div>
+                                    </div>
+                                {% endif %}
+                    <br/>
+
+                    <div class="h6 col-md-offset-1" style="position: absolute; bottom: 5px;">
+
+                        {% trans "Sent By:" %}
+                        {{ question.user_id }}
+                        |
+                        {% trans "Created at:" %}
+                        {{ question.created }}
+                        |
+                        {% trans "Last Modified:" %}
+                        {{ question.modified }}
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <hr/>
+                <p class="h3">{% trans 'Answers' %}</p>
+
+
+
+                <div class="col-md-offset-1">
+                {% with question.answers.all|approved|sort_votes as answers %}
+
+                    {% if answers %}
+
+                        {% for answer in answers %}
+                            <div class="panel panel-primary">
+                                <div class="panel-body" style="position: relative;">
+
+
+                                    <div class="text-center col-md-1">
+                                        {% if user.is_authenticated %}
+                                            <div>
+                                                <a href="#" onclick="Vote('a',{{ answer.id }},1, event)"><span
+                                                        class="glyphicon glyphicon-thumbs-up text-success"> </span></a>
+                                            </div>
+                                        {% endif %}
+                                        <div>
+                                                <span class="badge label-info" id="a{{ answer.id }}">
+                                                    {{ answer.votes }}
+                                                </span>
+
+                                        </div>
+                                        {% if user.is_authenticated %}
+                                            <div>
+                                                <a href="#" onclick="Vote('a',{{ answer.id }},-1, event)"><span
+                                                        class="glyphicon glyphicon-thumbs-down text-danger"> </span></a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    {{ answer }}
+
+
+                                {% if answer.image %}
+                                    <div class="center">
+                                    <div class="col-md-3">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img src="{{ answer.image.url }}" alt="">
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" href="{{ answer.image.url }}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div><!--/.portfolio-item-->
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                    <br/>
+
+                                    <div class="h6 col-md-offset-1" style="position: absolute; bottom: 5px;">
+
+                                        {% trans "Sent By:" %}
+                                        {{ question.user_id }}
+                                        |
+                                        {% trans "Created at:" %}
+                                        {{ question.created }}
+                                        |
+                                        {% trans "Last Modified:" %}
+                                        {{ question.modified }}
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="panel panel-primary">
+                            <div class="panel-body" style="position: relative;">
+
+                                <p>{% trans 'No answers to this question yet' %}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                        <hr />
+                        <div class="col-md-8 col-md-offset-2">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form | crispy }}
+
+
+                        <p><input class="btn btn-success pull-right" type="submit" value="إرسال" /></p>
+                    </form>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock maincontent %}

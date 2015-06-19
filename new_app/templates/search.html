@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="search_text">
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <ul>
+        {% for q in questions %}
+            <li>{{ q.object.header}}{{ q.object.get_absolute_url }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+</body>
+</html>

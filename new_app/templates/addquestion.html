@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+
+{% block maincontent %}
+
+
+    {% load widget_tweaks %}
+    {% load crispy_forms_tags %}
+
+    {% if msg%}
+    <div class="alert alert-success">
+    {{ msg }}
+    </div>
+    {% endif %}
+
+
+    <div class="well col-md-6 col-md-offset-3">
+        <fieldset>
+            <legend>
+اسأل سؤال
+            </legend>
+            <div class="panel-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
+                    <p><input class="btn btn-success pull-right" type="submit" value="إرسال" /></p>
+                </form>
+            </div>
+        </fieldset>
+
+    </div>
+
+
+
+
+    <script>
+
+        function checkTrack(){
+
+            if ($('#id_type').val() == 'TRACK'){
+                $('#div_id_track_id').show();
+            } else {
+                $('#div_id_track_id').hide();
+            }
+        }
+
+        checkTrack();
+
+        $('#id_type').on('change',function(){
+            checkTrack();
+        })
+
+
+
+    </script>
+{% endblock maincontent %}

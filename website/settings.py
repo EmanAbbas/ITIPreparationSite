@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'new_app',
     'crispy_forms',
+    'whoosh',
+    'haystack',
     
 )
 
@@ -162,3 +164,21 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 LOGIN_REDIRECT_URL = 'home'
+
+WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh/')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': WHOOSH_INDEX,
+    }
+}
+
+
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'

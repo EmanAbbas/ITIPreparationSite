@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-19 16:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: new_app/forms.py:10
+msgid "Question"
+msgstr "السؤال"
+
+#: new_app/forms.py:11
+msgid "Question Type"
+msgstr "نوع السؤال"
+
+#: new_app/forms.py:12
+msgid "Choose Tracks"
+msgstr "اختار تراك"
+
+#: new_app/forms.py:13 new_app/forms.py:22
+msgid "Image"
+msgstr "صورة"
+
+#: new_app/forms.py:20
+msgid "body"
+msgstr "الرد"
+
+#: new_app/templates/question-details.html:47
+#: new_app/templates/question-details.html:101
+#: new_app/templates/questions.html:56 new_app/templates/questions.html:111
+msgid "Sent By:"
+msgstr "ارسل بواسطة:"
+
+#: new_app/templates/question-details.html:50
+#: new_app/templates/question-details.html:104
+#: new_app/templates/questions.html:59 new_app/templates/questions.html:114
+msgid "Created at:"
+msgstr "تاريخ الإرسال:"
+
+#: new_app/templates/question-details.html:53
+#: new_app/templates/question-details.html:107
+#: new_app/templates/questions.html:62 new_app/templates/questions.html:117
+msgid "Last Modified:"
+msgstr "آخر تعديل:"
+
+#: new_app/templates/question-details.html:61
+msgid "Answers"
+msgstr "الإجابات"
+
+#: new_app/templates/question-details.html:122
+#: new_app/templates/questions.html:127
+msgid "No answers to this question yet"
+msgstr "لم يتم الإجابة على هذا السؤال بعد"
+
+#: new_app/templates/questions.html:133
+msgid "More"
+msgstr "المزيد"
+
+#: new_app/views.py:123
+msgid "Question Added Successfully"
+msgstr "تم إرسال السؤال بنجاح. في انتظار موافقة الأدمن"
+
+#, fuzzy
+#~| msgid "Answers"
+#~ msgid "Answer"
+#~ msgstr "الإجابة"

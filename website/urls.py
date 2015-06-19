@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url, patterns
+from django.conf import settings
 from django.contrib import admin
 from new_app.views import *
 
@@ -26,16 +27,33 @@ urlpatterns = [
     url(r'^tracks/$', tracks, name='tracks'),
     url(r'^track/([0-9]+)/$', track_details, name='track'),
 
+    url(r'^newquestion/$', add_question, name='add_question'),
+    url(r'^question/details/(?P<id>[0-9]+)/$', question_details, name='question_details'),
+
+
+    url(r'^moderate/$', moderate, name='moderate'),
+    url(r'^moderate/newquestions$', moderate_new_questions, name='moderate_new_questions'),
+    url(r'^moderate/newanswers$', moderate_new_answers, name='moderate_new_answers'),
+
 
     url(r'^faq/$', FAQ, name='FAQs'),
 
     url(r'^vote/$', Vote, name='vote'),
 
 
+    url(r'^approve/question$', approve_question, name='approve_question'),
+    url(r'^reject/question$', reject_question, name='reject_question'),
+
+
+
+    url(r'^approve/answer$', approve_answer, name='approve_answer'),
+    url(r'^reject/answer$', reject_answer, name='reject_answer'),
 
     url(r'^signup/$', SignUpView.as_view(), name='signup'),
 
+    url(r'^testsearch/$', search_questions),
 
+    url(r'^search/$', include('haystack.urls')),
 
 
 ]
@@ -48,3 +66,11 @@ urlpatterns += patterns(
 
 
                         )
+
+
+if settings.DEBUG :
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    )
+
+

@@ -26,3 +26,57 @@ function Vote(type, id, vote,event){
             });
         event.preventDefault();
     }
+
+function approveQuestion(id){
+
+
+        $.post('/approve/question', {id:id}, function(response) {
+                if (response.status == 'SUCCESS') {
+                    $('#'+id).remove();
+
+                }
+            });
+
+    }
+
+
+function rejectQuestion(id){
+
+
+        $.post('/reject/question', {id:id}, function(response) {
+                if (response.status == 'SUCCESS') {
+                    $('#'+id).remove();
+
+                }
+            });
+
+    }
+
+
+
+
+
+function approveAnswer(id){
+
+
+        $.post('/approve/answer', {id:id}, function(response) {
+                if (response.status == 'SUCCESS') {
+                    $('#'+id).remove();
+
+                }
+            });
+
+    }
+
+
+function rejectAnswer(id){
+
+
+        $.post('/reject/answer', {id:id}, function(response) {
+                if (response.status == 'SUCCESS') {
+                    $('#'+id).remove();
+
+                }
+            });
+
+    }
