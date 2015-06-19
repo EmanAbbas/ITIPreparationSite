@@ -57,8 +57,8 @@ class Question(models.Model):
     voteDownUsers = models.ManyToManyField(User, blank=True,related_name='questionDownVotes')
 
 
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now=True, null=True)
 
 
     @property
@@ -99,8 +99,8 @@ class Answer(models.Model):
 
     image = models.ImageField(null=True,blank=True, upload_to=get_upload_file_name)
 
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now=True, null=True)
 
     @property
     def votes(self):
@@ -135,8 +135,8 @@ class Material(models.Model):
     user_id = models.ForeignKey(User)
     track_id = models.ManyToManyField(Track, blank=True)
 
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
         return self.name
@@ -159,8 +159,8 @@ class Post(models.Model):
     date = models.CharField(max_length=100)
     type_name = models.ForeignKey(Type)
 
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now=True, null=True)
 
     def __unicode__(self):
         return self.title
