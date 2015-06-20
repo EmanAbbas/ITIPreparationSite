@@ -80,3 +80,31 @@ function rejectAnswer(id){
             });
 
     }
+
+
+
+
+function approveMaterial(id){
+
+
+        $.post('/approve/material', {id:id}, function(response) {
+                if (response.status == 'SUCCESS') {
+                    $('#'+id).remove();
+
+                }
+            });
+
+    }
+
+
+function rejectMaterial(id){
+
+
+        $.post('/reject/material', {id:id}, function(response) {
+                if (response.status == 'SUCCESS') {
+                    $('#'+id).remove();
+
+                }
+            });
+
+    }

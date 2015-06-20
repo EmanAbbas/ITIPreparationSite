@@ -221,9 +221,11 @@ def moderate(request):
 
     new_questions = Question.objects.filter(status=Question.status_choices[0][0])
     new_answers = Answer.objects.filter(status=Answer.status_choices[0][0])
+    new_materials = Material.objects.filter(status=Answer.status_choices[0][0])
 
     context['new_questions'] = new_questions.count()
     context['new_answers'] = new_answers.count()
+    context['new_materials'] = new_materials.count()
 
     return render(request,'moderate/home.html',context)
 
@@ -253,6 +255,18 @@ def moderate_new_answers(request):
 
     return render(request,'moderate/newanswers.html',context)
 
+
+@staff_member_required
+def moderate_new_materials(request):
+    context = {}
+
+    new_materials = Material.objects.filter(status=Material.status_choices[0][0])
+
+
+    context['new_materials'] = new_materials
+
+
+    return render(request,'moderate/newmaterials.html',context)
 
 
 
@@ -334,6 +348,44 @@ def reject_answer(request):
     return  JsonResponse(result)
 
 
+
+
+@staff_member_required
+def approve_material(request):
+
+    result = dict()
+    if not request.user.is_staff:
+        result['status'] = 'NOT_STAFF'
+    else:
+        id = int(request.POST.get('id'))
+        try:
+            m = Material.objects.get(pk=id)
+            m.status = Material.status_choices[1][0]
+            m.save()
+            result['status'] = 'SUCCESS'
+        except:
+            result['status'] = 'NOT_FOUND'
+
+    return  JsonResponse(result)
+
+
+@staff_member_required
+def reject_material(request):
+
+    result = dict()
+    if not request.user.is_staff:
+        result['status'] = 'NOT_STAFF'
+    else:
+        id = int(request.POST.get('id'))
+        try:
+            m = Material.objects.get(pk=id)
+            m.status = Material.status_choices[2][0]
+            m.save()
+            result['status'] = 'SUCCESS'
+        except:
+            result['status'] = 'NOT_FOUND'
+
+    return  JsonResponse(result)
 
 
 
