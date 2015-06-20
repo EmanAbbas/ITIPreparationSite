@@ -79,53 +79,12 @@ def questions(request,type,track_id):
     return render(request, 'questions.html',context)
 
 
-def firstStep(request,type):
-    questions = Question.objects.filter(type=type, status=Question.status_choices[1][0])
-    materials = Material.objects.filter(type=type)
-
-
-    # questions_paginator = Paginator(questions,2)
-    #
-    # page = request.GET.get("page")
-    # try:
-    #     questions = questions_paginator.page(page)
-    # except PageNotAnInteger:
-    #     questions = questions_paginator.page(1)
-    # except EmptyPage:
-    #     questions = questions_paginator.page(questions_paginator.num_pages)
-
-    return render(request, 'firststep.html', {'materials':materials,'questions':questions})
 
 def home(request):
 
     materials = Material.objects.filter(type__in=['IQ','EN'])
     return render(request, 'home.html', {'materials':materials,})
 
-
-def tracks(request):
-    all_tracks = Track.objects.all()
-
-    return render(request,'tracks.html',{'track':all_tracks[0]})
-
-def track_details(request, track_id):
-    context = {}
-
-    track = Track.objects.get(pk=track_id)
-
-    materials = track.material_set.all()
-    questions = track.question_set.filter(status=Question.status_choices[1][0])
-
-    context['track'] = track
-    context['materials'] = materials
-    context['questions'] = questions
-
-    return render(request,'tracks.html',context)
-
-
-def FAQ(request):
-    FAQs = Question.objects.filter(type='FAQ', status=Question.status_choices[1][0])
-
-    return render(request,'faqs.html',{'questions':FAQs})
 
 @login_required
 def Vote(request):

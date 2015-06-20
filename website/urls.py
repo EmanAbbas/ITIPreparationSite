@@ -22,10 +22,10 @@ from new_app.views import *
 admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^firststep/([A-Z]+)/$', firstStep, name='firststep'),
+    # url(r'^firststep/([A-Z]+)/$', firstStep, name='firststep'),
     url(r'^$', home, name='home'),
-    url(r'^tracks/$', tracks, name='tracks'),
-    url(r'^track/([0-9]+)/$', track_details, name='track'),
+    # url(r'^tracks/$', tracks, name='tracks'),
+    # url(r'^track/([0-9]+)/$', track_details, name='track'),
 
     url(r'^newquestion/$', add_question, name='add_question'),
     url(r'^question/details/(?P<id>[0-9]+)/$', question_details, name='question_details'),
@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'^moderate/newanswers$', moderate_new_answers, name='moderate_new_answers'),
 
 
-    url(r'^faq/$', FAQ, name='FAQs'),
+    # url(r'^faq/$', FAQ, name='FAQs'),
 
     url(r'^vote/$', Vote, name='vote'),
 
