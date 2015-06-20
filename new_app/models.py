@@ -138,6 +138,25 @@ class Material(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True)
     modified = models.DateTimeField(auto_now=True, null=True)
 
+
+    voteUpUsers = models.ManyToManyField(User, blank=True,related_name='materialUpVotes')
+    voteDownUsers = models.ManyToManyField(User, blank=True,related_name='materialDownVotes')
+
+
+    @property
+    def votes(self):
+        return self.voteUpUsers.count() - self.voteDownUsers.count()
+
+
+    def userVote(self,user):
+        if self.voteUpUsers.filter(pk=user.id).exists():
+            return 1
+        elif self.voteDownUsers.filter(pk=user.id).exists():
+            return -1
+        else:
+            return 0
+
+
     def __unicode__(self):
         return self.name
 

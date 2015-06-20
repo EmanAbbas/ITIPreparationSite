@@ -6,6 +6,8 @@ import json
 from django.core import serializers
 from django.db.models import Q
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 from django.views.generic import CreateView, FormView
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -22,6 +24,17 @@ from haystack.query import SearchQuerySet
 def firstStep(request,type):
     questions = Question.objects.filter(type=type, status=Question.status_choices[1][0])
     materials = Material.objects.filter(type=type)
+
+
+    # questions_paginator = Paginator(questions,2)
+    #
+    # page = request.GET.get("page")
+    # try:
+    #     questions = questions_paginator.page(page)
+    # except PageNotAnInteger:
+    #     questions = questions_paginator.page(1)
+    # except EmptyPage:
+    #     questions = questions_paginator.page(questions_paginator.num_pages)
 
     return render(request, 'firststep.html', {'materials':materials,'questions':questions})
 
@@ -72,6 +85,8 @@ def Vote(request):
             model = Question
         elif vote_type == 'a':
             model = Answer
+        elif vote_type == 'm':
+            model = Material
 
         try:
             item = model.objects.get(pk=id)
