@@ -24,3 +24,16 @@ class AnswerForm(ModelForm):
     class Meta:
         model = Answer
         fields = ['question_id','body','image', 'user_id' ]
+
+
+
+class MaterialForm(ModelForm):
+    name = forms.CharField(label=_('Title'))
+    description = forms.CharField(widget=forms.Textarea(),label=_('Description'),required=False)
+    link = forms.URLField(label=_('Link'))
+    type = forms.ChoiceField(label=_('Material Type'),choices=Material.type_choices)
+    track_id = forms.ModelMultipleChoiceField(label=_('Choose Tracks'), queryset=Track.objects.all(), widget=forms.CheckboxSelectMultiple,required=False )
+
+    class Meta:
+        model = Material
+        fields = ['name','description', 'link','type', 'track_id', 'user_id' ]

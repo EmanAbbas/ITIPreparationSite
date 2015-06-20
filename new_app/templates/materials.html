@@ -1,16 +1,29 @@
+{% extends 'base.html' %}
 
 {% load my_filters %}
 {% load i18n %}
+
+{% load bootstrap3 %}
+
+{% block maincontent %}
+<div class="row">
+
+{% if track %}
+
+{% include 'track.html' %}
+
+{% endif %}
+
 
 <div class="col-md-12 well">
 
     <div class="tabbable tabs-right">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#material" data-toggle="tab"> ماتيريال عامه</a></li>
-            <li><a href="#question" data-toggle="tab">أسئلة</a></li>
+            <li class="active"><a href="{% url 'materials' type track.id %}"> ماتيريال عامه</a></li>
+            <li><a href="{% url 'questions' type track.id %}" >أسئلة</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active t" id="material">
+            <div class="tab-pane active t">
 
                 <h2>
                     ماتيريال عامة
@@ -78,14 +91,19 @@
 
 
                     {% endfor %}
+                <div class="center">
+                                {% bootstrap_pagination materials %}
+
+                    </div>
                 </div>
             </div>
-            <div class="tab-pane t" id="question">
-                {% include 'questions.html' %}
-            </div>
+
 
         </div>
     </div>
 
 
 </div>
+
+</div>
+{% endblock %}

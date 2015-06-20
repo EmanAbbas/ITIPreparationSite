@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 16:17+0000\n"
+"POT-Creation-Date: 2015-06-20 20:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr "السؤال"
 msgid "Question Type"
 msgstr "نوع السؤال"
 
-#: new_app/forms.py:12
+#: new_app/forms.py:12 new_app/forms.py:35
 msgid "Choose Tracks"
 msgstr "اختار تراك"
 
@@ -39,42 +39,74 @@ msgstr "صورة"
 msgid "body"
 msgstr "الرد"
 
-#: new_app/templates/question-details.html:47
-#: new_app/templates/question-details.html:101
-#: new_app/templates/questions.html:56 new_app/templates/questions.html:111
+#: new_app/forms.py:31
+msgid "Title"
+msgstr "العنوان"
+
+
+msgid "Description"
+msgstr "الوصف"
+
+
+#: new_app/forms.py:33
+msgid "Link"
+msgstr "الرابط"
+
+#: new_app/forms.py:34
+msgid "Material Type"
+msgstr "نوع الماتيريال"
+
+#: new_app/templates/question-details.html:66
+#: new_app/templates/question-details.html:135
+#: new_app/templates/questions.html:77 new_app/templates/questions.html:145
 msgid "Sent By:"
 msgstr "ارسل بواسطة:"
 
-#: new_app/templates/question-details.html:50
-#: new_app/templates/question-details.html:104
-#: new_app/templates/questions.html:59 new_app/templates/questions.html:114
+#: new_app/templates/question-details.html:69
+#: new_app/templates/question-details.html:138
+#: new_app/templates/questions.html:80 new_app/templates/questions.html:148
 msgid "Created at:"
 msgstr "تاريخ الإرسال:"
 
-#: new_app/templates/question-details.html:53
-#: new_app/templates/question-details.html:107
-#: new_app/templates/questions.html:62 new_app/templates/questions.html:117
+#: new_app/templates/question-details.html:72
+#: new_app/templates/question-details.html:141
+#: new_app/templates/questions.html:83 new_app/templates/questions.html:151
 msgid "Last Modified:"
 msgstr "آخر تعديل:"
 
-#: new_app/templates/question-details.html:61
+#: new_app/templates/question-details.html:80
 msgid "Answers"
 msgstr "الإجابات"
 
-#: new_app/templates/question-details.html:122
-#: new_app/templates/questions.html:127
+#: new_app/templates/question-details.html:156
+#: new_app/templates/questions.html:161
 msgid "No answers to this question yet"
 msgstr "لم يتم الإجابة على هذا السؤال بعد"
 
-#: new_app/templates/questions.html:133
+#: new_app/templates/questions-materials.html:22
+msgid "Add Material"
+msgstr "أضف ماتيريال"
+
+#: new_app/templates/questions.html:167
 msgid "More"
 msgstr "المزيد"
 
-#: new_app/views.py:123
+#: new_app/views.py:138
 msgid "Question Added Successfully"
 msgstr "تم إرسال السؤال بنجاح. في انتظار موافقة الأدمن"
 
-#, fuzzy
-#~| msgid "Answers"
-#~ msgid "Answer"
-#~ msgstr "الإجابة"
+#: new_app/views.py:163
+msgid "Answer sent Successfully"
+msgstr "تم إرسال الرد بنجاح. في انتظار موافقة الأدمن"
+
+#: new_app/views.py:165
+msgid "Your aren't authenticated"
+msgstr "أنت غير مصرح لك"
+
+
+msgid "Material Added Successfully"
+msgstr "تم إضافة الماتيريال بنجاح. في انتظار موافقة الأدمن"
+
+
+msgid "Answer"
+msgstr "الإجابة"

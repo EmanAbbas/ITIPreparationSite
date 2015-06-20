@@ -32,6 +32,7 @@ class Question(models.Model):
         ('IQ', 'IQ'),
         ('EN', 'English'),
         ('FAQ', 'FAQ'),
+        ('SOFT', 'Soft Skills'),
         ('TRACK', 'Track'),
     )
 
@@ -121,9 +122,16 @@ class Answer(models.Model):
 
 class Material(models.Model):
 
+    status_choices = (
+        ('Pending', 'Pending'),
+        ('Approved', 'Approved'),
+        ('Rejected', 'Rejected'),
+    )
+
     type_choices = (
         ('IQ', 'IQ'),
         ('EN', 'English'),
+        ('SOFT', 'Soft Skills'),
         ('TRACK', 'Track'),
     )
 
@@ -138,6 +146,7 @@ class Material(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True)
     modified = models.DateTimeField(auto_now=True, null=True)
 
+    status = models.CharField(max_length=10,choices=status_choices, default=status_choices[0][0])
 
     voteUpUsers = models.ManyToManyField(User, blank=True,related_name='materialUpVotes')
     voteDownUsers = models.ManyToManyField(User, blank=True,related_name='materialDownVotes')

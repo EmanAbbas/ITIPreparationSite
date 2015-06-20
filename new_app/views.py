@@ -21,6 +21,64 @@ from copy import deepcopy
 from haystack.query import SearchQuerySet
 # Create your views here.
 
+
+
+
+def materials(request,type,track_id):
+
+    track = None
+    material = Material.objects.filter(type=type, status=Material.status_choices[1][0])
+    if track_id:
+        material = material.filter(track_id=track_id)
+        track = get_object_or_404(Track,pk=track_id)
+
+
+    paginator = Paginator(material,10)
+
+    page = request.GET.get("page")
+    try:
+        material = paginator.page(page)
+    except PageNotAnInteger:
+        material = paginator.page(1)
+    except EmptyPage:
+        material = paginator.page(paginator.num_pages)
+
+
+
+    context = {}
+    context['materials'] = material
+    context['track'] = track
+    context['type'] = type
+    return render(request, 'materials.html',context)
+
+
+def questions(request,type,track_id):
+    track = None
+    question = Question.objects.filter(type=type, status=Material.status_choices[1][0])
+    if track_id:
+        question = question.filter(track_id=track_id)
+        track = get_object_or_404(Track,pk=track_id)
+
+
+    paginator = Paginator(question,2)
+
+    page = request.GET.get("page")
+    try:
+        question = paginator.page(page)
+    except PageNotAnInteger:
+        question = paginator.page(1)
+    except EmptyPage:
+        question = paginator.page(paginator.num_pages)
+
+
+
+    context = {}
+    context['questions'] = question
+    context['track'] = track
+    context['type'] = type
+    return render(request, 'questions.html',context)
+
+
 def firstStep(request,type):
     questions = Question.objects.filter(type=type, status=Question.status_choices[1][0])
     materials = Material.objects.filter(type=type)
@@ -175,6 +233,28 @@ def question_details(request,id):
 
 
     return render(request,'question-details.html',context)
+
+
+@login_required
+def add_material(request):
+    msg = None
+
+    form = MaterialForm()
+
+    if request.method == 'POST':
+        data = deepcopy(request.POST)
+        data['user_id'] = request.user.id
+        form = MaterialForm(data=data)
+
+        if form.is_valid():
+            form.save()
+            form = MaterialForm()
+            msg=_('Material Added Successfully')
+
+
+    del form.fields['user_id']
+    return render(request,'addmaterial.html',{'form':form,'msg':msg})
+
 
 @staff_member_required
 def moderate(request):

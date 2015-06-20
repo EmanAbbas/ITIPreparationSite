@@ -41,6 +41,14 @@ urlpatterns = [
     url(r'^vote/$', Vote, name='vote'),
 
 
+    url(r'^materials/(?P<type>[a-zA-Z]+)/(?P<track_id>[0-9]*)$', materials, name='materials'),
+    url(r'^questions/(?P<type>[a-zA-Z]+)/(?P<track_id>[0-9]*)$', questions, name='questions'),
+
+
+
+    url(r'^newmaterial/$', add_material, name='add_material'),
+
+
     url(r'^approve/question$', approve_question, name='approve_question'),
     url(r'^reject/question$', reject_question, name='reject_question'),
 

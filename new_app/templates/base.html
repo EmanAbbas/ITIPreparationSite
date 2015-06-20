@@ -93,8 +93,10 @@
                     </a>
 
                         <ul  class="dropdown-menu">
-                            <li><a href="{% url 'firststep' 'EN' %}">English</a></li>
-                            <li><a href="{% url 'firststep' 'IQ' %}">IQ</a></li>
+
+                            <li><a href="{% url 'materials' 'EN' '' %}">English</a></li>
+                            <li><a href="{% url 'materials' 'IQ' '' %}">IQ</a></li>
+
                         </ul>
                 </li>
                 <li class="dropdown">
@@ -105,11 +107,11 @@
                     </a>
                     <ul class="dropdown-menu">
                         {% for track in tracks %}
-                            <li><a href="{% url 'track' track.id %}">{{ track.title }}</a></li>
+                            <li><a href="{% url 'materials' 'TRACK' track.id %}">{{ track.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
-                <li><a href="{% url 'FAQs' %}">أسئله شائعه</a></li>
+                <li><a href="{% url 'questions' 'FAQ' '' %}">أسئله شائعه</a></li>
 
 
             </ul>
