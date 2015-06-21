@@ -28,11 +28,12 @@ def materials(request,type,track_id):
 
     track = None
     material = Material.objects.filter(type=type, status=Material.status_choices[1][0])
+
     if track_id:
         material = material.filter(track_id=track_id)
         track = get_object_or_404(Track,pk=track_id)
 
-
+    material = sorted(material, key=lambda x: -x.votes)
     paginator = Paginator(material,10)
 
     page = request.GET.get("page")
@@ -55,11 +56,12 @@ def materials(request,type,track_id):
 def questions(request,type,track_id):
     track = None
     question = Question.objects.filter(type=type, status=Material.status_choices[1][0])
+
     if track_id:
         question = question.filter(track_id=track_id)
         track = get_object_or_404(Track,pk=track_id)
 
-
+    question = sorted(question, key=lambda x: -x.votes)
     paginator = Paginator(question,2)
 
     page = request.GET.get("page")
