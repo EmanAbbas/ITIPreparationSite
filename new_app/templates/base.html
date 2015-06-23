@@ -105,7 +105,7 @@
                         التراك
                         <span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu scrollable-menu">
                         {% for track in tracks %}
                             <li><a href="{% url 'materials' 'TRACK' track.id %}">{{ track.title }}</a></li>
                         {% endfor %}

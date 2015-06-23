@@ -60,3 +60,10 @@ body{
     padding-top: 100px;
     padding-bottom: 50px;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+}
+
