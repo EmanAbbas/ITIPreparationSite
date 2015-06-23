@@ -62,7 +62,7 @@ def questions(request,type,track_id):
         track = get_object_or_404(Track,pk=track_id)
 
     question = sorted(question, key=lambda x: -x.votes)
-    paginator = Paginator(question,2)
+    paginator = Paginator(question,10)
 
     page = request.GET.get("page")
     try:
