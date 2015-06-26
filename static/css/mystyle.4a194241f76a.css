@@ -1,5 +1,5 @@
 ﻿.jumbotron {
-    background-image: url("../images/jumbotron_bg.jpg");
+    background-image: url("../images/jumbotron_bg.cf4fe8648786.jpg");
     background-size: cover;
     height: 200px;
     color: #cccccc;
@@ -39,17 +39,17 @@ footer{
 @font-face
 {
 	font-family: GESSTwoBold;
-	src: url(../font/GESSTwoBold.otf);
+	src: url("../font/GESSTwoBold.f07d3a3d3b03.otf");
 }
 @font-face
 {
 	font-family: GESSTwoMedium;
-	src: url(../font/GESSTwoMedium.otf);
+	src: url("../font/GESSTwoMedium.db409ed6c632.otf");
 }
 @font-face
 {
 	font-family: fdfont-reg;
-	src: url(../font/fdfont-reg.ttf);
+	src: url("../font/fdfont-reg.7cc662d36ef0.ttf");
 }
 body{
     font-family:fdfont-reg;

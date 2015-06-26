@@ -10,12 +10,13 @@
 
 
 {#    <link href=" {% static 'css/bootstrap-cerulean.min.css' %}" rel="stylesheet"/>#}
-    <link href=" {% static 'css/bootstrap1.min.css' %}" rel="stylesheet"/>
-    <link href=" {% static 'css/bootstrap-flipped.min.css' %}" rel="stylesheet"/>
+{#    <link href=" {% static 'css/bootstrap1.min.css' %}" rel="stylesheet"/>#}
+{#    <link href=" {% static 'css/bootstrap-flipped.min.css' %}" rel="stylesheet"/>#}
+    <link href=" {% static 'css/materialize.min.css' %}" rel="stylesheet"/>
     <link href=" {% static 'css/font-awesome.min.css' %}" rel="stylesheet"/>
     <link href=" {% static 'css/prettyPhoto.css' %}" rel="stylesheet"/>
     <link href=" {% static 'css/animate.css' %}" rel="stylesheet"/>
-    <link href=" {% static 'css/main.css' %}" rel="stylesheet"/>
+{#    <link href=" {% static 'css/main.css' %}" rel="stylesheet"/>#}
 
     
     <!--[if lt IE 9]>
@@ -44,23 +45,61 @@
 {#        </p>#}
 {#    </div>#}
 
+<ul id="dropdown_firststep" class="dropdown-content">
+
+    <li><a href="{% url 'materials' 'EN' '' %}">English</a></li>
+    <li><a href="{% url 'materials' 'IQ' '' %}">IQ</a></li>
+    <li><a href="{% url 'materials' 'SOFT' '' %}">Soft Skills</a></li>
+</ul>
+
+<ul id="dropdown_tracks" class="dropdown-content" style="width: 200px;">
+    {% for track in tracks %}
+        <li><a href="{% url 'materials' 'TRACK' track.id %}">{{ track.title }}</a></li>
+    {% endfor %}
+</ul>
+
+<div class="navbar-fixed">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
-        <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
+        <div class="nav-wrapper">
+{#        <div class="navbar-header">#}
+{##}
+{#            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#            </button>#}
+{#        </div>#}
 {#        <a class="navbar-brand" href="#"><!--<img src="images/logo.PNG" alt="iti" class="logo" />--></a>#}
-        <a class="navbar-brand" href="{% url 'home' %}">ITI Prepare</a>
+        <a class="navbar-brand brand-logo" href="{% url 'home' %}">ITI Prepare</a>
 
-        <div class="navbar-collapse collapse">
+{#        <div class="navbar-collapse collapse">#}
 
 
-            <ul class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-left right hide-on-med-and-down">
+
+
+                <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+
+{#                <li><a href="#contact">مراحل التقديم </a></li>#}
+                <li class="dropdown">
+                    <a class="dropdown-button" href="#!" data-activates="dropdown_firststep" data-constrainwidth="false" data-beloworigin="true">
+                        {% trans 'first step' %}
+                    <span class="caret"></span>
+                    </a>
+
+
+                </li>
+                <li class="dropdown">
+
+                    <a class="dropdown-button" href="#!" data-activates="dropdown_tracks" data-constrainwidth="false" data-beloworigin="true">
+                        {% trans 'Tracks' %}
+                        <span class="caret"></span>
+                    </a>
+
+                </li>
+                <li><a href="{% url 'questions' 'FAQ' '' %}">{% trans 'FAQ' %}</a></li>
+
+
                 {% if not user.is_authenticated %}
                     <li><a href="{% url 'login' %}">تسجيل دخول</a></li>
                     <li><a href="{% url 'signup' %}">إنشاء حساب</a></li>
@@ -82,42 +121,11 @@
 
 
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
 
-{#                <li><a href="#contact">مراحل التقديم </a></li>#}
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        {% trans 'first step' %}
-                    <span class="caret"></span>
-                    </a>
-
-                        <ul  class="dropdown-menu">
-
-                            <li><a href="{% url 'materials' 'EN' '' %}">English</a></li>
-                            <li><a href="{% url 'materials' 'IQ' '' %}">IQ</a></li>
-                            <li><a href="{% url 'materials' 'SOFT' '' %}">Soft Skills</a></li>
-                        </ul>
-                </li>
-                <li class="dropdown">
-
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        {% trans 'Tracks' %}
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu scrollable-menu">
-                        {% for track in tracks %}
-                            <li><a href="{% url 'materials' 'TRACK' track.id %}">{{ track.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li><a href="{% url 'questions' 'FAQ' '' %}">{% trans 'FAQ' %}</a></li>
-
-
-            </ul>
+{#        </div>#}
         </div>
     </nav>
-
+</div>
 
 </div>
 
@@ -156,6 +164,7 @@
 
 
     <script src="{% static 'js/bootstrap-arabic.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
 
     <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
     <script src="{% static 'js/jquery.isotope.min.js' %}"></script>
