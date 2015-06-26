@@ -27,7 +27,7 @@
             {% if type != 'FAQ' %}
                 <div class="tabbable tabs-right">
                 <ul class="nav nav-tabs">
-                    <li><a href="{% url 'materials' type track.id %}"> ماتيريال عامه</a></li>
+                    <li><a href="{% url 'materials' type track.id %}">{% trans 'Material' %}</a></li>
                     <li class="active"><a href="{% url 'questions' type track.id %}">أسئلة</a></li>
                 </ul>
                 <div class="tab-content">

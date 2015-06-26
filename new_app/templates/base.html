@@ -1,6 +1,6 @@
 ﻿{% load staticfiles %}
 
-
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ar">
 <!--    xmlns="http://www.w3.org/1999/xhtml"-->
@@ -83,12 +83,12 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'home' %}">الرئيسيه</a></li>
+                <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
 
 {#                <li><a href="#contact">مراحل التقديم </a></li>#}
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        أول خطوة
+                        {% trans 'first step' %}
                     <span class="caret"></span>
                     </a>
 
@@ -102,7 +102,7 @@
                 <li class="dropdown">
 
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        التراك
+                        {% trans 'Tracks' %}
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu scrollable-menu">
@@ -111,7 +111,7 @@
                         {% endfor %}
                     </ul>
                 </li>
-                <li><a href="{% url 'questions' 'FAQ' '' %}">أسئله شائعه</a></li>
+                <li><a href="{% url 'questions' 'FAQ' '' %}">{% trans 'FAQ' %}</a></li>
 
 
             </ul>
@@ -133,7 +133,7 @@
 
 </div>
 
-    <div class="container-fluid text-center navbar-fixed-bottom" style="margin-bottom: 0px; margin-top: 10px;">
+<div class="container-fluid text-center navbar-fixed-bottom" style="margin-bottom: 0px; margin-top: 10px;">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- itiprepare -->
     <ins class="adsbygoogle"
@@ -143,8 +143,8 @@
     <script>
 
 
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </div>
 
 

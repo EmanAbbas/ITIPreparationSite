@@ -61,7 +61,8 @@ urlpatterns = [
     url(r'^approve/material$', approve_material, name='approve_material'),
     url(r'^reject/material$', reject_material, name='reject_material'),
 
-    url(r'^signup/$', SignUpView.as_view(), name='signup'),
+    # url(r'^signup/$', SignUpView.as_view(), name='signup'),
+    url(r'^signup/$', register, name='signup'),
 
     url(r'^testsearch/$', search_questions),
 

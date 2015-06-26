@@ -19,15 +19,14 @@
 
     <div class="tabbable tabs-right">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="{% url 'materials' type track.id %}"> ماتيريال عامه</a></li>
+            <li class="active"><a href="{% url 'materials' type track.id %}">{% trans 'Material' %}</a></li>
             <li><a href="{% url 'questions' type track.id %}" >أسئلة</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active t">
 
                 <h2>
-                    ماتيريال عامة
-
+{% trans 'Material' %}
                     {% if user.is_authenticated %}
 <a href="{% url 'add_material' %}" class="pull-right btn btn-success">
     <span class="glyphicon glyphicon-plus"></span>

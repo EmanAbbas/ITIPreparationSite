@@ -13,6 +13,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth import authenticate, login
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -390,6 +391,20 @@ def reject_material(request):
     return  JsonResponse(result)
 
 
+
+
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            new_user.backend='django.contrib.auth.backends.ModelBackend'
+            login(request,new_user)
+            return redirect('home')
+
+    return render(request,'signup.html',{'form':form})
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
