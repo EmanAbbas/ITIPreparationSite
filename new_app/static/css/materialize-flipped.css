@@ -1,0 +1,16 @@
+html {
+  direction: rtl;
+}
+body {
+  direction: rtl;
+}
+
+nav ul li {
+    float: right;
+}
+
+
+nav .brand-logo{
+    float: left;
+    left: 5px;
+}
