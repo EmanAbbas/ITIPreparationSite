@@ -56,7 +56,7 @@ class Question(models.Model):
 
     type = models.CharField(choices=type_choices, max_length=10, default='TRACK')
 
-    status = models.CharField(max_length=10,choices=status_choices, default=status_choices[0][0])
+    status = models.CharField(max_length=10,choices=status_choices, default=status_choices[1][0])
 
 
     image = models.ImageField(null=True,blank=True, upload_to=get_upload_file_name)
@@ -101,7 +101,7 @@ class Answer(models.Model):
     voteDownUsers = models.ManyToManyField(User, blank=True,related_name='answerDownVotes')
 
 
-    status = models.CharField(max_length=10,choices=status_choices, default=status_choices[0][0])
+    status = models.CharField(max_length=10,choices=status_choices, default=status_choices[1][0])
 
 
     image = models.ImageField(null=True,blank=True, upload_to=get_upload_file_name)
@@ -153,7 +153,7 @@ class Material(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True)
     modified = models.DateTimeField(auto_now=True, null=True)
 
-    status = models.CharField(max_length=10,choices=status_choices, default=status_choices[0][0])
+    status = models.CharField(max_length=10,choices=status_choices, default=status_choices[1][0])
 
     voteUpUsers = models.ManyToManyField(User, blank=True,related_name='materialUpVotes')
     voteDownUsers = models.ManyToManyField(User, blank=True,related_name='materialDownVotes')
