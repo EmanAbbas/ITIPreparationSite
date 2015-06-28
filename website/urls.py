@@ -17,6 +17,7 @@ from django.conf.urls import include, url, patterns
 from django.conf import settings
 from django.contrib import admin
 from new_app.views import *
+import notifications
 
 
 admin.autodiscover()
@@ -61,6 +62,9 @@ urlpatterns = [
     url(r'^approve/material$', approve_material, name='approve_material'),
     url(r'^reject/material$', reject_material, name='reject_material'),
 
+
+    url(r'^notify/read$', notification_read, name='notification_read'),
+
     # url(r'^signup/$', SignUpView.as_view(), name='signup'),
     url(r'^signup/$', register, name='signup'),
 
@@ -87,3 +91,7 @@ if settings.DEBUG :
     )
 
 
+urlpatterns += patterns('',
+        url('^inbox/notifications/', include(notifications.urls)),
+        url(r'^notification/$', 'new_app.views.notify', name='notification'),
+    )

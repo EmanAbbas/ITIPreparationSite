@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-26 21:23+0000\n"
+"POT-Creation-Date: 2015-06-28 00:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,24 +55,48 @@ msgstr "الرابط"
 msgid "Material Type"
 msgstr "نوع المادة"
 
+#: new_app/models.py:217 new_app/templates/base.html:88
+msgid "Answered"
+msgstr "أجاب على"
+
+#: new_app/templates/base.html:74
+msgid "notifications"
+msgstr "الإشعارات"
+
+#: new_app/templates/base.html:84
+msgid "and"
+msgstr "و"
+
 #: new_app/templates/base.html:86
+msgid "others"
+msgstr "آخرون"
+
+#: new_app/templates/base.html:91
+msgid "since"
+msgstr "منذ"
+
+#: new_app/templates/base.html:98
+msgid "No new notifications"
+msgstr "لا توجد إشعارات جديدة"
+
+#: new_app/templates/base.html:118
 msgid "Home"
 msgstr "الرئيسية"
 
-#: new_app/templates/base.html:91
+#: new_app/templates/base.html:123
 msgid "first step"
 msgstr "الخطوة الأولى"
 
-#: new_app/templates/base.html:105
+#: new_app/templates/base.html:137
 msgid "Tracks"
 msgstr "المسارات"
 
-
-#: new_app/templates/base.html:114
+#: new_app/templates/base.html:146
 msgid "FAQ"
 msgstr "أسئلة شائعة"
 
-
+#: new_app/templates/materials.html:22 new_app/templates/materials.html:29
+#: new_app/templates/questions.html:30
 msgid "Material"
 msgstr "مواد عامة"
 

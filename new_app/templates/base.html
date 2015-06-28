@@ -67,6 +67,49 @@
                  {% else %}
                     <li><a>
                         مرحباً, {{ user.username }}</a></li>
+
+
+                    <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        {% trans 'notifications' %}
+                        {% if notifications|length != 0 %}
+                        <span class="badge" id="notify">{{ notifications|length }}</span>
+                        {% endif %}
+                    <span class="caret"></span>
+                    </a>
+
+                        <ul  class="dropdown-menu" style="width: 270px;">
+                            {% for notify in notifications %}
+                            <li id="{{ notify.target.id }}">
+                                <a onclick="notification_read({{ notify.target.id }})"><span class="close" style="color: #ffffff;">x</span> </a>
+                                <a onclick="notification_read({{ notify.target.id }})" href="{% url 'question_details' notify.target.id %}" style="white-space: normal;">
+
+                                <strong>
+                                {{ notify.actor }}
+                                </strong>
+                                {% if notify.others != 0 %}
+                                    {% trans 'and' %}
+                                    {{ notify.others }}
+                                    {% trans 'others' %}
+                                {% endif %}
+                                {% trans 'Answered' %}
+                                <strong>
+                                {{ notify.target }}
+                                    </strong>
+                                <br />
+                                <small>
+                                {% trans 'since' %}
+                                {{ notify.timesince }}
+                                    </small>
+
+                            </a></li>
+
+{#                                <li><a >{{ notify.target.id }}</a></li>#}
+                            {% empty %}
+                                <li><a >{% trans 'No new notifications' %}</a></li>
+                            {% endfor %}
+                        </ul>
+                </li>
                     <li><a href="{% url 'logout' %}">
                         تسجيل الخروج
                         </a></li>

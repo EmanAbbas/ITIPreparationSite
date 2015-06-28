@@ -48,7 +48,8 @@ INSTALLED_APPS = (
     'crispy_forms',
     'whoosh',
     'haystack',
-    'bootstrap3'
+    'bootstrap3',
+    'notifications',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

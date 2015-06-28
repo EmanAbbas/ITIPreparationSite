@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 from time import time
 
 
+from django.db.models.signals import post_save
+from notifications import notify
+from django.utils.translation import ugettext_lazy as _
+
+
+
 
 def get_upload_file_name(instance,filename):
     return 'images/%s/%s_%s'% (type(instance).__name__,str(time()).replace('.','_'),filename)
@@ -103,6 +109,7 @@ class Answer(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True)
     modified = models.DateTimeField(auto_now=True, null=True)
 
+
     @property
     def votes(self):
         return self.voteUpUsers.count() - self.voteDownUsers.count()
@@ -192,3 +199,23 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+
+
+def my_handler(sender, instance, created, **kwargs):
+    question = instance.question_id
+    question_user = question.user_id
+    answer_user = instance.user_id
+
+    users_set = set()
+    users_set.add(question_user)
+
+    notify.send(recipient=question_user, sender=instance.user_id, verb='Answered', target=question)
+    for answer in question.answers.all():
+        if answer.user_id != answer_user and answer.user_id != question_user:
+            notify.send(recipient=answer.user_id, sender=instance.user_id, verb=_('Answered'), target=question)
+            users_set.add(answer.user_id)
+
+
+post_save.connect(my_handler, sender=Answer)

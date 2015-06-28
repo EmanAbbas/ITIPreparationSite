@@ -108,3 +108,14 @@ function rejectMaterial(id){
             });
 
     }
+
+
+function notification_read(target_id){
+    $.post('/notify/read', {target_id:target_id}, function(response) {
+                if (response.status == 'SUCCESS') {
+                    $('#'+target_id).remove();
+                    $('#notify').val($('#notify').val() - 1 );
+
+                }
+            });
+}

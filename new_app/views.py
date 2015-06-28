@@ -406,6 +406,34 @@ def register(request):
 
     return render(request,'signup.html',{'form':form})
 
+
+
+@login_required
+def notification_read(request):
+
+    result = dict()
+
+    target_id = int(request.POST.get('target_id'))
+
+    notifications = request.user.notifications.unread()
+
+    for n in notifications:
+        if n.target.id == target_id:
+            n.mark_as_read()
+
+
+    result['status'] = 'SUCCESS'
+
+    return  JsonResponse(result)
+
+
+
+
+def notify(request):
+    notifications = request.user.notifications.unread()
+
+    return render(request,'notify.html',{'notifications':notifications})
+
 class SignUpView(CreateView):
     form_class = UserCreationForm
     template_name = "signup.html"
