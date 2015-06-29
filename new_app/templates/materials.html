@@ -20,7 +20,8 @@
     <div class="tabbable tabs-right">
         <ul class="nav nav-tabs">
             <li class="active"><a href="{% url 'materials' type track.id %}">{% trans 'Material' %}</a></li>
-            <li><a href="{% url 'questions' type track.id %}" >أسئلة</a></li>
+            <li ><a href="{% url 'questions' type track.id %}">{% trans 'questions' %}</a></li>
+            <li ><a href="{% url 'questions' type track.id %}?u=t">{% trans 'unanswered questions' %}</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active t">
@@ -42,7 +43,7 @@
 
                         <div class="panel panel-info">
                             <div class="panel-heading" id="heading{{ material.id }}">
-                                <h3 class="panel-title">
+                                <h3 class="panel-title" style="position: relative;">
                                     <div class="text-center col-md-1">
 
                                     <div  {% if not user.is_authenticated %} style="visibility: hidden;"{% endif %}>
@@ -69,6 +70,19 @@
                                         {{ material.name }}
                                     </a>
                                 <br />
+
+                                <div class="h6 col-md-offset-1" style="position: absolute; bottom: 0px;">
+
+                                    {% trans "Sent By:" %}
+                                    {{ material.user_id }}
+                                    |
+                                    {% trans "Created at:" %}
+                                    {{ material.created }}
+                                    |
+                                    {% trans "Last Modified:" %}
+                                    {{ material.modified }}
+                                </div>
+
                                 <div class="clearfix"></div>
                                 </h3>
                             </div>

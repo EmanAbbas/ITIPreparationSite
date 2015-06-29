@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-28 00:42+0000\n"
+"POT-Creation-Date: 2015-06-29 23:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "الرابط"
 msgid "Material Type"
 msgstr "نوع المادة"
 
-#: new_app/models.py:217 new_app/templates/base.html:88
+#: new_app/models.py:217 new_app/templates/base.html:95
 msgid "Answered"
 msgstr "أجاب على"
 
@@ -63,62 +63,73 @@ msgstr "أجاب على"
 msgid "notifications"
 msgstr "الإشعارات"
 
-#: new_app/templates/base.html:84
+#: new_app/templates/base.html:91
 msgid "and"
 msgstr "و"
 
-#: new_app/templates/base.html:86
+#: new_app/templates/base.html:93
 msgid "others"
 msgstr "آخرون"
 
-#: new_app/templates/base.html:91
+#: new_app/templates/base.html:101
 msgid "since"
 msgstr "منذ"
 
-#: new_app/templates/base.html:98
+#: new_app/templates/base.html:109
 msgid "No new notifications"
 msgstr "لا توجد إشعارات جديدة"
 
-#: new_app/templates/base.html:118
+#: new_app/templates/base.html:129
 msgid "Home"
 msgstr "الرئيسية"
 
-#: new_app/templates/base.html:123
+#: new_app/templates/base.html:134
 msgid "first step"
 msgstr "الخطوة الأولى"
 
-#: new_app/templates/base.html:137
+#: new_app/templates/base.html:148
 msgid "Tracks"
 msgstr "المسارات"
 
-#: new_app/templates/base.html:146
+#: new_app/templates/base.html:157
 msgid "FAQ"
 msgstr "أسئلة شائعة"
 
-#: new_app/templates/materials.html:22 new_app/templates/materials.html:29
+#: new_app/templates/materials.html:22 new_app/templates/materials.html:30
 #: new_app/templates/questions.html:30
 msgid "Material"
 msgstr "مواد عامة"
 
-#: new_app/templates/materials.html:34
+#: new_app/templates/materials.html:23 new_app/templates/questions.html:31
+msgid "questions"
+msgstr "الأسئلة"
+
+#: new_app/templates/materials.html:24 new_app/templates/questions.html:32
+msgid "unanswered questions"
+msgstr "أسئلة لم يُجب عليها"
+
+#: new_app/templates/materials.html:35
 msgid "Add Material"
 msgstr "أضف مادة"
 
+#: new_app/templates/materials.html:76
 #: new_app/templates/question-details.html:66
 #: new_app/templates/question-details.html:135
-#: new_app/templates/questions.html:105 new_app/templates/questions.html:181
+#: new_app/templates/questions.html:107 new_app/templates/questions.html:183
 msgid "Sent By:"
 msgstr "ارسل بواسطة:"
 
+#: new_app/templates/materials.html:79
 #: new_app/templates/question-details.html:69
 #: new_app/templates/question-details.html:138
-#: new_app/templates/questions.html:108 new_app/templates/questions.html:184
+#: new_app/templates/questions.html:110 new_app/templates/questions.html:186
 msgid "Created at:"
 msgstr "تاريخ الإرسال:"
 
+#: new_app/templates/materials.html:82
 #: new_app/templates/question-details.html:72
 #: new_app/templates/question-details.html:141
-#: new_app/templates/questions.html:111 new_app/templates/questions.html:187
+#: new_app/templates/questions.html:113 new_app/templates/questions.html:189
 msgid "Last Modified:"
 msgstr "آخر تعديل:"
 
@@ -127,27 +138,27 @@ msgid "Answers"
 msgstr "الإجابات"
 
 #: new_app/templates/question-details.html:156
-#: new_app/templates/questions.html:197
+#: new_app/templates/questions.html:199
 msgid "No answers to this question yet"
 msgstr "لم يتم الإجابة على هذا السؤال بعد"
 
-#: new_app/templates/questions.html:203
+#: new_app/templates/questions.html:205
 msgid "More"
 msgstr "المزيد"
 
-#: new_app/views.py:158
+#: new_app/views.py:170
 msgid "Question Added Successfully"
 msgstr "تم إرسال السؤال بنجاح. في انتظار موافقة الأدمن"
 
-#: new_app/views.py:183
+#: new_app/views.py:195
 msgid "Answer sent Successfully"
 msgstr "تم إرسال الرد بنجاح. في انتظار موافقة الأدمن"
 
-#: new_app/views.py:185
+#: new_app/views.py:197
 msgid "Your aren't authenticated"
 msgstr "أنت غير مصرح لك"
 
-#: new_app/views.py:214
+#: new_app/views.py:226
 msgid "Material Added Successfully"
 msgstr "تم إضافة الماتيريال بنجاح. في انتظار موافقة الأدمن"
 

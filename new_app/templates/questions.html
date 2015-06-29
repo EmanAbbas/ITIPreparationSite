@@ -28,7 +28,8 @@
                 <div class="tabbable tabs-right">
                 <ul class="nav nav-tabs">
                     <li><a href="{% url 'materials' type track.id %}">{% trans 'Material' %}</a></li>
-                    <li class="active"><a href="{% url 'questions' type track.id %}">أسئلة</a></li>
+                    <li {% if not u %}class="active"{% endif %}><a href="{% url 'questions' type track.id %}">{% trans 'questions' %}</a></li>
+                    <li {% if u %}class="active"{% endif %}><a href="{% url 'questions' type track.id %}?u=t">{% trans 'unanswered questions' %}</a></li>
                 </ul>
                 <div class="tab-content">
                 <div class="tab-pane active t">
@@ -74,8 +75,9 @@
 
                                 </div>
 
-                                <a data-toggle="collapse" data-parent="#accordion2" href="#collapse{{ question.id }}"
-                                   aria-expanded="true" aria-controls="collapse{{ question.id }}">
+{#                                <a data-toggle="collapse" data-parent="#accordion2" href="#collapse{{ question.id }}"#}
+{#                                   aria-expanded="true" aria-controls="collapse{{ question.id }}">#}
+                                <a href="{% url 'question_details' question.id %}">
                                     {{ question.header }}
 
                                 </a>

@@ -58,11 +58,21 @@ def questions(request,type,track_id):
     track = None
     question = Question.objects.filter(type=type, status=Material.status_choices[1][0])
 
+
+
     if track_id:
         question = question.filter(track_id=track_id)
         track = get_object_or_404(Track,pk=track_id)
 
     question = sorted(question, key=lambda x: -x.votes)
+
+
+    unanswered = request.GET.get("u")
+    if unanswered:
+        question = filter(lambda x: x.answers.all().count() == 0, question)
+    else:
+        question = filter(lambda x: x.answers.all().count() != 0, question)
+
     paginator = Paginator(question,10)
 
     page = request.GET.get("page")
@@ -79,6 +89,8 @@ def questions(request,type,track_id):
     context['questions'] = question
     context['track'] = track
     context['type'] = type
+    context['u'] = unanswered
+
     return render(request, 'questions.html',context)
 
 
