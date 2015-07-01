@@ -406,10 +406,10 @@ def reject_material(request):
 
 
 def register(request):
-    form = UserCreationForm()
+    form = registerationForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = registerationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
             new_user.backend='django.contrib.auth.backends.ModelBackend'

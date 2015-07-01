@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.forms import UserCreationForm
+from captcha.fields import ReCaptchaField
 
 from models import *
 
@@ -37,3 +39,7 @@ class MaterialForm(ModelForm):
     class Meta:
         model = Material
         fields = ['name','description', 'link','type', 'track_id', 'user_id' ]
+
+
+class registerationForm(UserCreationForm):
+    captcha = ReCaptchaField(attrs={'theme' : 'clean'})

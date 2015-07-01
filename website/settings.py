@@ -50,7 +50,10 @@ INSTALLED_APPS = (
     'haystack',
     'bootstrap3',
     'notifications',
+    'captcha',
 )
+
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -196,3 +199,9 @@ LOCALE_PATHS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+
+
+RECAPTCHA_PUBLIC_KEY = '6LcxwAgTAAAAAEhN-fFo_j3trlmopfaJbcl_xzyk'
+RECAPTCHA_PRIVATE_KEY = '6LcxwAgTAAAAAJ1TjaUP3mODksopvmvSK8FjCdMl'
+# NOCAPTCHA = True
